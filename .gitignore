@@ -1,1 +1,110 @@
-/README.md
+# Compiled output
+/dist
+/tmp
+/out-tsc
+/bazel-out
+
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# IDEs and editors
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+*.swp
+*.swo
+*~
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/mcp.json
+.history/*
+
+# Miscellaneous
+/.angular/cache
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
+__screenshots__/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# .NET specific
+## Build results
+bin/
+obj/
+dist/
+build/
+.vs/
+.vscode/
+.idea/
+*.user
+*.userosscache
+*.sln.docstates
+*.suo
+*.userprefs
+*.db
+*.db-shm
+*.db-wal
+
+## NuGet
+*.nupkg
+*.snupkg
+.nuget/
+.nuget/packages/
+packages/
+!packages/build/
+*.nuget.props
+*.nuget.targets
+
+## Environment-specific files
+appsettings.Development.json
+appsettings.Production.json
+appsettings.Local.json
+
+## Rider
+.idea/
+.idea_modules/
+*.sln.iml
+riderModule.iml
+
+## CSharp
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+*.sln.iml
+
+## Visual Studio cache/options
+.vs/
+
+## Entity Framework migrations (optional - uncomment if desired)
+# Migrations/
+
+## Test results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+*.trx
+.nunit/
+
+## Local environment files
+.env
+.env.local
+.env.*.local

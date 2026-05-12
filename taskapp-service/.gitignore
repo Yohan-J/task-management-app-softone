@@ -1,0 +1,61 @@
+# .NET
+bin/
+obj/
+dist/
+build/
+.vs/
+.vscode/
+*.user
+*.userosscache
+*.sln.docstates
+*.suo
+*.userprefs
+
+# NuGet
+*.nupkg
+*.snupkg
+.nuget/
+.nuget/packages/
+packages/
+!packages/build/
+*.nuget.props
+*.nuget.targets
+
+# Environment files
+appsettings.Development.json
+appsettings.Production.json
+appsettings.Local.json
+
+# IDEs and editors
+.idea/
+.idea_modules/
+*.swp
+*.swo
+*~
+
+# Rider
+.idea/
+riderModule.iml
+*.sln.iml
+
+# Logs and results
+[Ll]og/
+[Ll]ogs/
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+*.trx
+.nunit/
+
+# Local environment
+.env
+.env.local
+.env.*.local
+
+# Database files
+*.db
+*.db-shm
+*.db-wal
+
+# System files
+.DS_Store
+Thumbs.db
