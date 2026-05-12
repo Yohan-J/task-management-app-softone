@@ -1,0 +1,137 @@
+<section class="toolbar">
+  <h1>Task Management</h1>
+  <div>
+    <span class="user">Signed in as {{ authService.currentUser() }}</span>
+    <button (click)="logout()">Logout</button>
+  </div>
+</section>
+
+<section class="layout">
+  <article class="panel list-panel">
+    <h2>Tasks</h2>
+    <form [formGroup]="filterForm" class="filters">
+      <input formControlName="search" placeholder="Search title/description" />
+      <select formControlName="status">
+        <option value="all">All status</option>
+        <option value="pending">Pending</option>
+        <option value="completed">Completed</option>
+      </select>
+      <select formControlName="priority">
+        <option value="all">All priority</option>
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+      </select>
+      <select formControlName="sortBy">
+        <option value="createdAt">Created Date</option>
+        <option value="updatedAt">Updated Date</option>
+        <option value="dueDate">Due Date</option>
+        <option value="title">Title</option>
+      </select>
+      <select formControlName="sortOrder">
+        <option value="desc">Descending</option>
+        <option value="asc">Ascending</option>
+      </select>
+      <button type="button" (click)="applyFilters()">Apply</button>
+    </form>
+
+    @if (listError()) {
+    <p class="error">{{ listError() }}</p>
+    }
+
+    @if (isLoading()) {
+    <p>Loading tasks...</p>
+    } @else {
+    <ul class="task-list">
+      @for (task of tasks(); track task.id) {
+      <li [class.completed]="task.isCompleted">
+        <div class="task-content" (click)="selectTask(task)">
+          <strong>{{ task.title }}</strong>
+          <small>{{ task.priority }} | {{ task.dueDate ? (task.dueDate | date:'mediumDate') : 'No due date' }}</small>
+          <small>Status: {{ task.isCompleted ? 'Completed' : 'Pending' }}</small>
+        </div>
+        <div class="task-actions">
+          <button type="button" (click)="selectTask(task)">Edit</button>
+          <button type="button" (click)="deleteTask(task.id)">Delete</button>
+          <button type="button" (click)="markCompleted(task.id)" [disabled]="task.isCompleted">
+            Complete
+          </button>
+        </div>
+      </li>
+      }
+    </ul>
+
+    @if (totalCount() > 0) {
+    <div class="pagination">
+      <span class="pagination-meta">
+        Page {{ currentPage() }} of {{ totalPages() }} · {{ totalCount() }} task{{ totalCount() === 1 ? '' : 's' }}
+      </span>
+      <div class="pagination-actions" role="navigation" aria-label="Task list pages">
+        <button type="button" class="pager-edge" (click)="goToPage(1)" [disabled]="currentPage() <= 1">First</button>
+        <button type="button" (click)="goToPreviousPage()" [disabled]="currentPage() <= 1">Previous</button>
+        <span class="pager-numeric">
+          @for (n of pageNumbers(); track n; let i = $index) {
+            @if (i > 0 && n - pageNumbers()[i - 1] > 1) {
+            <span class="pager-gap" aria-hidden="true">…</span>
+            }
+            <button
+              type="button"
+              class="pager-page"
+              [class.pager-page-active]="n === currentPage()"
+              (click)="goToPage(n)"
+            >
+              {{ n }}
+            </button>
+          }
+        </span>
+        <button type="button" (click)="goToNextPage()" [disabled]="currentPage() >= totalPages()">Next</button>
+        <button type="button" class="pager-edge" (click)="goToPage(totalPages())" [disabled]="currentPage() >= totalPages()">
+          Last
+        </button>
+      </div>
+    </div>
+    }
+    }
+  </article>
+
+  <article class="panel editor-panel">
+    <h2>{{ selectedTaskId() ? 'Edit Task' : 'Add Task' }}</h2>
+    <form [formGroup]="taskForm" (ngSubmit)="saveTask()" class="editor-form">
+      <label for="title">Title</label>
+      <input id="title" formControlName="title" />
+      @if (hasTaskControlError('title', 'required')) {
+      <p class="field-error">Title is required.</p>
+      }
+      @if (hasTaskControlError('title', 'minlength')) {
+      <p class="field-error">Title must be at least 2 characters.</p>
+      }
+
+      <label for="description">Description</label>
+      <textarea id="description" formControlName="description" rows="4"></textarea>
+
+      <label for="priority">Priority</label>
+      <select id="priority" formControlName="priority">
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+      </select>
+
+      <label for="dueDate">Due Date</label>
+      <input id="dueDate" type="date" formControlName="dueDate" />
+
+      <label class="checkbox">
+        <input type="checkbox" formControlName="isCompleted" />
+        Completed
+      </label>
+
+      @if (formError()) {
+      <p class="error">{{ formError() }}</p>
+      }
+
+      <div class="editor-actions">
+        <button type="submit">{{ selectedTaskId() ? 'Update Task' : 'Add Task' }}</button>
+        <button type="button" (click)="clearForm()">Clear</button>
+      </div>
+    </form>
+  </article>
+</section>

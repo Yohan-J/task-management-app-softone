@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "taskapp-service", "taskapp-service.csproj", "{2C0B0640-1C4D-65D8-3A86-F5C089D2275A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2C0B0640-1C4D-65D8-3A86-F5C089D2275A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C0B0640-1C4D-65D8-3A86-F5C089D2275A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C0B0640-1C4D-65D8-3A86-F5C089D2275A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C0B0640-1C4D-65D8-3A86-F5C089D2275A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2F55FF33-630B-41B6-B4AD-D649F8FF5CF4}
+	EndGlobalSection
+EndGlobal
