@@ -47,7 +47,7 @@ Authentication:
 - `GET /api/auth/me`
 
 Tasks (authenticated):
-- `GET /api/tasks` (supports `search`, `status`, `priority`, `sortBy`, `sortOrder`)
+- `GET /api/tasks` (supports query parameters: `search`, `status`, `priority`, `sortBy`, `sortOrder`, `page`, `pageSize`)
 - `GET /api/tasks/{id}`
 - `POST /api/tasks`
 - `PUT /api/tasks/{id}`
